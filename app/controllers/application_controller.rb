@@ -20,11 +20,11 @@ class ApplicationController < Sinatra::Base
   post "/signup" do
     #binding.pry
     user = User.new(:username => params[:username], :password => params[:password])
-		if !user.username.empty? && !user.password.empty?  #user can only be save via bycrpt gem when a password is given
+		if !user.username.empty? && user.save  #user can only be save via bycrpt gem when a password is given
       redirect "/login"
     #elsif user.password.empty?
     #  redirect "/failure"
-  else !user && !user.save
+  else 
       redirect "/failure"
 	 #	else #user.username == nil && user != nil
 	 	end
